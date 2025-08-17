@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 - TGW</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+        body {
+            background: #23272e;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            max-width: 380px;
+            margin: 120px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.22);
+            padding: 36px 32px 28px 32px;
+        }
+        .login-title {
+            text-align: center;
+            font-size: 2em;
+            color: #23272e;
+            font-weight: bold;
+            margin-bottom: 28px;
+            letter-spacing: 0.12em;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #23272e;
+            font-size: 1em;
+            font-weight: 500;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #d3d3d3;
+            border-radius: 5px;
+            font-size: 1em;
+            background: #f8f8f8;
+            box-sizing: border-box;
+        }
+        .login-btn {
+            width: 100%;
+            background: #444a56;
+            color: #fff;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .login-btn:hover {
+            background: #23272e;
+        }
+        .login-tip {
+            text-align: center;
+            color: #888;
+            font-size: 0.95em;
+            margin-top: 18px;
+        }
+        /* 导航栏样式 */
+        /* 导航栏样式 */
+        .navbar {
+            width: 100%;
+            background: #7a7a7abe;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            padding: 0 16px;
+            box-sizing: border-box;
+        }
+        .navbar-logo {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #000000;
+            margin-left: 20px;
+            letter-spacing: 0.08em;
+        }
+        .navbar-links {
+            display: flex;
+            margin-left: 36px;
+        }
+        .navbar-links a {
+            margin-left: 28px;
+            color: #23272e;
+            font-size: 1em;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .navbar-links a:hover {
+            color: #fff;
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction:column;
+            justify-content:space-between;
+            width:30px;
+            height:21px;
+            cursor:pointer;
+            margin-right:16px;
+        }
+        .menu-toggle span {
+            width:100%;
+            height:3px;
+            background-color:#23272e;
+            border-radius:3px;
+        }
+        .search-icon-container {
+            margin-right: 20px;
+        }
+        .search-icon-container img {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            filter: brightness(0.2);
+        }
+        .navbar-right a {
+            margin-right: 18px;
+            color: #23272e;
+            font-size: 1em;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .navbar-right a:hover {
+            color: #fff;
+        }
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+            }
+            .navbar-links {
+                position:absolute;
+                top:56px;
+                left:0;
+                right:0;
+                background:#7a7a7abe;
+                flex-direction:column;
+                align-items:flex-start;
+                padding:16px;
+                box-shadow:0 4px 8px rgba(0,0,0,0.1);
+                transform:translateY(-150%);
+                transition:transform 0.3s ease;
+                z-index:-1;
+            }
+            .navbar-links.active {
+                transform:translateY(0);
+            }
+            .navbar-links a {
+                margin: 0;
+                padding: 12px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .navbar-right a {
+                display: none;
+            }
+            /* 隐藏滚动条但保持功能 */
+            body {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏开始 -->
+    <<div class="navbar">
+        <div class="navbar-logo">TGW</div>
+        <div class="navbar-links" id="navbarLinks">
+            <a href="index.html" class="navbar-link">首页</a>
+            <a href="intel.html" class="navbar-link">情报中心</a>
+            <a href="https://flowus.cn/a7a131b8-0e88-461b-a08a-4a8c8e974e67" class="navbar-link">文档（活动中心）</a>
+            <a href="#" class="navbar-link" onclick="window.open('https://pd.qq.com/s/gpiwnyopd')">玩家社区</a>
+            <a href="encyclopedia.html" class="navbar-link">百科</a>
+            <a href="developers.html" class="navbar-link">开发人员</a>
+            <a href="contact.html" class="navbar-link">联系我们</a>
+            <a href="#" class="navbar-link">下载游戏</a>
+        </div>
+        <div class="navbar-right">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="/图片/search.png" alt="搜索" id="searchIcon" class="search-icon">
+        </div>
+    </div>
+    <!-- 顶部导航栏结束 -->
+
+    <div class="login-container">
+        <div class="login-title">账号登录</div>
+        <form class="login-form">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" placeholder="请输入邮箱" required>
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" placeholder="请输入密码" required>
+            <button type="submit" class="login-btn">登录</button>
+        </form>
+        <div class="login-tip">绑定游戏账号，体验更多功能</div>
+    </div>
+    <script>
+        // 汉堡菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const navbarLinks = document.getElementById('navbarLinks');
+        menuToggle.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+        
+        // 点击其他区域关闭菜单
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+        
+        // 搜索图标跳转
+        document.getElementById('searchIcon').addEventListener('click', function() {
+            window.location.href = 'search.html';
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>百科 - TGW</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+        body {
+            background: #23272e;
+            color: #23272e;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+            padding: 48px 36px 48px 36px;
+        }
+        .title {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #b8860b;
+            margin-bottom: 24px;
+            letter-spacing: 0.08em;
+            text-align: center;
+            text-shadow: 0 2px 8px #fffbe6, 0 1px 0 #fff;
+        }
+        .section {
+            margin-bottom: 32px;
+            color: #23272e;
+            font-size: 1.13em;
+        }
+        .section-title {
+            font-size: 1.22em;
+            color: #d2691e;
+            font-weight: bold;
+            margin: 24px 0 10px 0;
+            text-shadow: 0 1px 0 #fffbe6;
+        }
+        ul, ol {
+            color: #23272e;
+            font-size: 1.08em;
+            line-height: 2;
+            margin: 0 0 16px 0;
+            padding-left: 24px;
+        }
+        .keyword {
+            background: #fffbe6;
+            color: #b8860b;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 1em;
+            margin-right: 4px;
+        }
+        .note {
+            color: #b8860b;
+            font-size: 1em;
+            margin-top: 16px;
+            text-align: center;
+        }
+        .divider {
+            border-bottom: 1px solid #b8860b;
+            margin: 24px 0;
+        }
+        @media (max-width: 900px) {
+            /* 隐藏滚动条但保持功能 */
+            body {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        /* 新增子标题样式 */
+        .subsection-title {
+            font-size: 1.14em;
+            color: #a25c18;
+            font-weight: bold;
+            margin: 20px 0 8px 0;
+            text-shadow: 0 1px 0 #fffbe6;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏占位符 -->
+    <div class="navbar-placeholder"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('.navbar-placeholder').load('navbar.html .navbar');
+        });
+    </script>
+    <div class="container">
+        <div class="title">百科</div>
+        <div class="section">
+            <div class="section-title" id="schlieffenplan">主国</div>
+            英国，德国，法国，俄国（奥匈待添加）
+        </div>
+        <div class="section">
+            <div class="section-title" id="allies">盟国</div>
+            暂无（美国，奥斯曼，意大利，塞尔维亚，保加利亚，罗马尼亚，希腊，比利时，苏俄待添加）
+        </div>
+        <div class="section">
+            <div class="section-title" id="mechanics">机制</div>
+            <b>补给值：</b> 计划值和行动点（计划值等于指挥点槽，行动点等于指挥点）<br>
+            开局为2，初始上限为16，最高为32。使用部分卡牌会增加或减少补给值。
+        </div>
+        <div class="section">
+            <div class="section-title" id="trench">堑壕层数</div>
+            每个步兵单位初始为0，上限为5。步兵单位在1回合内不行动且未被攻击且未进行攻击时，在回合结束时堑壕值+1，每拥有1点堑壕值，防御+1，移动后，堑壕值归零。
+        </div>
+        <div class="section">
+            <div class="section-title" id="battlelines">战线</div>
+            共四条，海战线每行可容纳三个单位，陆战线每行可容纳5个单位<br>
+            中间两条战线可以互相争夺
+        </div>
+        <div class="section">
+            <div class="section-title" id="deckbuilding">卡组构筑</div>
+            陆军牌40张，海军牌20张，陆军盟国牌最多12张，海军盟国牌最多4张，所有英雄牌，决策牌和对策牌均分海陆军
+        </div>
+        <div class="section">
+            <div class="section-title" id="drawing">抽牌机制</div>
+            友方回合开始时，玩家可以选择抽2张陆军牌或抽1张海军牌
+        </div>
+        <div class="section">
+            <div class="section-title" id="handlimit">手牌上限</div>
+            9
+        </div>
+        <div class="section">
+            <div class="section-title" id="rarity">稀有度</div>
+            <ul>
+                <li><b>黑桃：</b>每个卡组中只能携带1张同名卡牌</li>
+                <li><b>红桃：</b>每个卡组中只能携带2张同名卡牌</li>
+                <li><b>梅花：</b>每个卡组中只能携带3张同名卡牌</li>
+                <li><b>方片：</b>每个卡组中只能携带4张同名卡牌</li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title" id="planning">计划值增长机制</div>
+            每个友方回合开始时，自然增加1，到达16时不再自然增加
+        </div>
+        <div class="section">
+            <div class="section-title" id="victory">胜负条件</div>
+            回合结束时牌堆，手牌和场上的牌之和更多的一方获胜或其中一方的牌堆，手牌和场上均无牌或一方指挥部血量为零时获胜
+        </div>
+        <div class="section">
+            <div class="section-title">伤害类型</div>
+            对战伤害（包括攻击伤害和反击伤害），决策伤害，特性伤害
+        </div>
+        <div class="section">
+            <div class="section-title">词条</div>
+            <ul>
+                <li><b>机动X：</b>部署或加入战场的回合内，可以行动X次，X最多为3</li>
+                <li><b>掩护：</b>令相邻的单位被掩护，除部分特殊单位外，其他单位无法攻击被掩护的单位</li>
+                <li><b>支援：</b>拥有此词条的海军可以攻击陆军</li>
+                <li><b>迟滞：</b>令1个单位无法行动，直到下一个其所有者的回合结束</li>
+                <li><b>穿插：</b>攻击时不会受到反击伤害</li>
+                <li><b>埋伏：</b>每回合首次被攻击时，会先造成反击伤害。若攻击的单位因此阵亡，则埋伏单位不受到此次攻击伤害</li>
+                <li><b>伪装：</b>伪装单位无法被单位攻击。伪装单位行动后失去伪装。掩护单位和位于交战线的单位无法拥有伪装</li>
+                <li><b>山地：</b>当部署或加入新的山地单位时，使上一个友方部署或加入的山地单位获得+1/+1</li>
+                <li><b>协同：</b>选择一个友方单位与本单位共同拥有此词条效果</li>
+                <li><b>冲锋：</b>免疫首次反击伤害</li>
+                <li><b>抉择：</b>从多个选项中选择一项执行</li>e
+                <li><b>动员X：</b>X个友方回合后，触发效果</li>
+                <li><b>浴血：</b>单位受伤后触发效果</li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">卡牌类型及分类</div>
+            <b>陆军：</b><br>
+            <ul>
+                <li><b>步兵：</b>一个回合内可以攻击或移动</li>
+                <li><b>工兵：</b>部署时，获得x张建筑卡</li>
+                <li><b>坦克：</b>带有装甲</li>
+                <li><b>火炮：</b>可以直接攻击任意一条战线，且不受反击伤害</li>
+                <li><b>岸防炮：</b>可攻击海军</li>
+                <li><b>防空炮：</b>可攻击空军</li>
+                <li><b>骑兵：</b>在一回合内可同时移动并攻击，且可以在两条交战线任意移动（除非满员）</li>
+                <li><b>建筑：</b>当工兵部署时获得一张建筑，只能部署工兵旁边，建筑受步兵、骑兵攻击减半。不可移动。阵营为：中立，只能影响相邻的陆军单位。本战线没有友方单位时，敌方可直接进入此战线，此时，建筑将为敌方单位提供效果。</li>
+            </ul>
+            <b>其它牌</b><br>
+            <ul>
+                <li><b>决策：</b>指令</li>
+                <li><b>对策：</b>反制</li>
+                <li><b>协定：</b>正在开发中</li>
+                <li><b>英雄：</b>无稀有度，每个卡组每张同名牌只能携带1张</li>
+            </ul>
+        </div>
+        <!-- 新增的海军机制内容 -->
+        <div class="section">
+            <div class="section-title">1914海军具体机制</div>
+            
+            <div class="subsection-title">一、海军军舰种类</div>
+            <ul>
+                <li><b>炮艇：</b>奥匈帝国独有海军作战单位</li>
+                <li><b>鱼雷艇：</b>轻型快速突击单位</li>
+                <li><b>驱逐舰：</b>多功能护卫舰只</li>
+                <li><b>巡洋舰：</b>包括旧型巡洋舰、装甲巡洋舰、掩蔽巡洋舰、轻巡洋舰等变种</li>
+                <li><b>战列舰：</b>主力战舰，包含前无畏舰，无畏舰，超无畏舰等型号</li>
+                <li><b>战列巡洋舰：</b>高速主力战舰，包含无畏舰、超无畏舰等型号</li>
+                <li><b>水上飞机航母：</b>待定功能（开发中）</li>
+                <li><b>潜艇：</b>水下隐蔽攻击单位</li>
+            </ul>
+            
+            <div class="subsection-title">二、海军封锁值机制</div>
+            <ul>
+                <li><b>1. 各类型军舰封锁值：</b>（炮艇，鱼雷艇除外）
+                    <ul>
+                        <li>潜艇封锁值：3</li>
+                        <li>战列巡洋舰/巡洋舰封锁值：2</li>
+                        <li>驱逐舰/战列舰封锁值：1</li>
+                    </ul>
+                </li>
+                <li><b>2. 封锁值区间效果：</b>
+                    <ul>
+                        <li>最终封锁值计算方法：场上己方海军总封锁值 - 场上敌方海军总封锁值 = 实际封锁值</li>
+                        <li>封锁值1-4区间：每点封锁值扣除敌方1点行动点（最高扣减4点）</li>
+                        <li>封锁值5-8区间：敌方陆军卡组抽牌时少抽一张牌，且保留1-4区间效果</li>
+                        <li>封锁值>8区间：每两回合将一张<span class="keyword">饥寒交迫</span>（决策卡）置入敌方手牌，并保留上述所有效果</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="subsection-title">三、海军控场机制</div>
+            <p>当己方海军同时满足以下条件时触发战场控制效果：</p>
+            <ul>
+                <li>控制海军战场的两条交战线</li>
+                <li>在敌方交战线部署至少2个海军单位</li>
+                <li><b>控制效果：</b>
+                    <ul>
+                        <li>当敌方交战线存在<span class="keyword">2个己方海军单位</span>时：敌方陆军行动花费+1</li>
+                        <li>当敌方交战线存在<span class="keyword">3个己方海军单位</span>时：敌方陆军行动花费+2</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 新增内容结束 -->
+    </div>
+    <script>
+
+    </script>
+                    if (firstMatch) {
+                        // 直接跳转到匹配的页面和锚点
+                        window.location.href = firstMatch.url;
+                    }
+    </script>
+</body>
+</html>

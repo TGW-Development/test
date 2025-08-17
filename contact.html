@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>联系我们 - TGW</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+        body {{
+            background: #23272e;
+            color: #eee;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }}
+        .container {{
+            max-width: 700px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+            padding: 48px 36px 48px 36px;
+        }}
+        .contact-title {{
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 24px;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }}
+        .contact-text {{
+            font-size: 1.18em;
+            color: #23272e;
+            line-height: 2;
+            text-align: center;
+        }}
+        /* 导航栏样式 */
+        .navbar {{
+            width:100%;
+            background:#7a7a7abe;
+            height:56px;
+            display:flex;
+            align-items:center;
+            box-shadow:0 2px 8px rgba(0,0,0,0.04);
+            position:sticky;
+            top:0;
+            z-index:10;
+            padding:0 16px;
+            box-sizing:border-box;
+        }}
+        .navbar-logo {{
+            font-size:1.3em;
+            font-weight:bold;
+            color:#000;
+            margin-right:24px;
+            letter-spacing:0.08em;
+        }}
+        .navbar-links {{
+            display:flex;
+            align-items:center;
+            overflow-x:auto;
+            flex:1;
+            -ms-overflow-style:none;
+            scrollbar-width:none;
+        }}
+        .navbar-links::-webkit-scrollbar {{
+            display:none;
+        }}
+        .navbar-link {{
+            color:#23272e;
+            font-size:1em;
+            text-decoration:none;
+            font-weight:500;
+            margin-left:18px;
+            white-space:nowrap;
+        }}
+        .navbar-right {{
+            display:flex;
+            align-items:center;
+        }}
+        .search-icon {{
+            width:28px;
+            height:28px;
+            cursor:pointer;
+            filter:brightness(0.2);
+            margin-right:16px;
+        }}
+        /* 汉堡菜单 */
+        .menu-toggle {{
+            display:none;
+            flex-direction:column;
+            justify-content:space-between;
+            width:30px;
+            height:21px;
+            cursor:pointer;
+            margin-right:16px;
+        }}
+        .menu-toggle span {{
+            width:100%;
+            height:3px;
+            background-color:#23272e;
+            border-radius:3px;
+        }}
+        @media (max-width: 900px) {{
+            /* 移动端导航栏 */
+            .menu-toggle {{
+                display:flex;
+            }}
+            .navbar-links {{
+                position:absolute;
+                top:56px;
+                left:0;
+                right:0;
+                background:#7a7a7abe;
+                flex-direction:column;
+                align-items:flex-start;
+                padding:16px;
+                box-shadow:0 4px 8px rgba(0,0,0,0.1);
+                transform:translateY(-150%);
+                transition:transform 0.3s ease;
+                z-index:-1;
+            }}
+            .navbar-links.active {{
+                transform:translateY(0);
+            }}
+            .navbar-link {{
+                margin:8px 0 8px 0;
+                width:100%;
+                padding:8px 0;
+            }}
+            .navbar-right {{
+                justify-content: flex-end;
+            }}
+            .search-icon {{
+                order: 1;
+                margin-right: 16px;
+            }}
+            .menu-toggle {{
+                order: 2;
+            }}
+            /* 隐藏滚动条但保持功能 */
+            body {{
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }}
+            body::-webkit-scrollbar {{
+                display: none;
+            }}
+        }}
+    </style>
+</head>
+<body>
+    <!-- 导航栏占位符 -->
+    <div class="navbar-placeholder"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('.navbar-placeholder').load('navbar.html .navbar');
+        });
+    </script>
+
+    <div class="container">
+        <div class="contact-title">联系我们</div>
+        <div class="contact-text">
+            如需反馈建议、合作洽谈或获取技术支持，欢迎通过邮箱与我们联系：<br>
+            <b style="color:#b8860b;">3676586649@qq.com</b><br><br>
+            我们会尽快回复您的邮件，感谢您的支持与关注！
+        </div>
+    </div>
+    <script>
+
+    </script>
+    <!-- 引入搜索功能脚本 -->
+    <script src="js/search.js"></script>
+</body>
+</html>
+<!-- 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             MMM  MMM       MMMMMMMMMMM       MMMM                               MMMMM        MMMMMM            MMMM                
+       MMMM          MMMMMMM             MMMM               MMMM         MMMMMMMM     MMMMMMMMMMMMMMMMM   MMMM         MMMM     MMMMMMMMMM           MMMM          MMMMMMMM          MMM  MMM   MMMMMMMMMMMMMM        MMMM   MMMMMMMMMMMMMMMMM    MMMMMMMMMMMMMMMMMMMMMMMMMM            MMMM                
+   MMMMMMMM        MMMMMMMMMMMM      MMMMMMMM             MMMMMM      MMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMM   MMMM         MMMM     MMMMMMMMMMMMMM       MMMM      MMMMMMMMMMMMMMM       MMM  MMM   MMMM                  MMMM   MMMMMMMMMMMMMMMM     MMM          MMM             MMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+       MMMM       MMMM     MMMMM         MMMM            MMMMMMM      MMMM       MM         MMMM          MMMM         MMMM     MMMM      MMMMMM     MMMM     MMMMM       MMMMM      MMM  MMM   MMMM             MMMMMMMMMMMMMMMMM       MMMM     MMMMMMMMMMM  MMM                    MMMM                  
+       MMMM      MMMMM      MMMMM        MMMM           MMMM MMM      MMMM                  MMMM          MMMM         MMMM     MMMM        MMMMM    MMMM    MMMMM          MMMM     MMMMMMMMMMMMMMMMMMMMMMMMMM       MMMM     MMMM      MMMM     MMMMMMMMMMM  MMM                   MMMMMMMMMMMMMMMMMM     
+       MMMM      MMMMM       MMMM        MMMM          MMMM  MMM      MMMMMMM               MMMM          MMMM         MMMM     MMMM         MMMM    MMMM    MMMM           MMMMM    MMM        MMMMMM     MMMM      MMMMMMM   MMMM     MMMM      MMM     MMM  MMMMMMMMMMMMMM      MMMMMMMMMMMMMMMMMMMM     
+       MMMM       MMMMM    MMMMMM        MMMM        MMMMM   MMM        MMMMMMMMM           MMMM          MMMM         MMMM     MMMM         MMMM    MMMM   MMMMM            MMMM    MMM        MMMMMMM    MMM      MMMMMMMMMM  MMMM   MMMM       MMM     MMM  MMM    MMMM       MMMMMMM            MMM     
+       MMMM        MMMMMMMMMMMMMM        MMMM       MMMM     MMM            MMMMMMMM        MMMM          MMMM         MMMM     MMMM         MMMM    MMMM   MMMMM            MMMM    MMMMMMMMMM MMMMMMMM  MMMM     MMMMMMM MMMM  MMMM MMMM       MMMMMMMMMMMM  MMM    MMMM    MMMMMM MMMMMMMMMMMMMMMMMM     
+       MMMM             M   MMMMM        MMMM      MMMMMMMMMMMMMMMM             MMMMM       MMMM          MMMM         MMMM     MMMM         MMMM    MMMM    MMMM           MMMMM    MMM   MMMM MMM  MMM MMMM     MMMMMMMM  MM    MMMMMMM        MMMM          MMM    MMMM     MMM   MMM            MMM     
+       MMMM                 MMMM         MMMM                MMM                 MMMM       MMMM          MMMMM        MMMM     MMMM       MMMMM     MMMM     MMMM         MMMMM    MMMM   MMMM MMM   MMMMMM     MMMM MMMM         MMMMM         MMMM         MMMM    MMMM           MMMMMMMMMMMMMMMMMM     
+       MMMM        MMM     MMMM          MMMM                MMM     MMMM       MMMMM       MMMM           MMMMM     MMMMM      MMMM     MMMMMMM     MMMM     MMMMMM      MMMMM     MMM    MMMMMMMM   MMMMM      MMM  MMMM       MMMMMMMMM       MMMM        MMMMM    MMMM           MMMMMMMMMMMMMMMMMM     
+  MMMMMMMMMMMMMM  MMMMMMMMMMMM      MMMMMMMMMMMMMM           MMM      MMMMMMMMMMMMM         MMMM            MMMMMMMMMMMMM       MMMMMMMMMMMMM        MMMM       MMMMMMMMMMMMM      MMMM    MMMMMMMMMMMMMMMMMMM        MMMM    MMMMMM  MMMMMMM   MMMM        MMMMM     MMMM           MMM            MMM     
+                     MMMMMM                                               MMMMMM                               MMMMMM                                               MMMMMM        MMMM     MMMMMMMMMMMM   MMMMMM      MMMM MMMMMMM       MMMMMMMMMMM       MMMMM      MMMM           MMM       MMMMMMMM           
+-->

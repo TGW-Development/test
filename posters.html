@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>原创海报 - TGW</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+        /* 导航栏样式 */
+        .navbar {
+            width: 100%;
+            background: #7a7a7abe;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar-logo {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #000000;
+            margin-left: 20px;
+            letter-spacing: 0.08em;
+        }
+        .navbar-links {
+            display: flex;
+            margin-left: 36px;
+        }
+        .navbar-links a {
+            margin-left: 28px;
+            color: #23272e;
+            font-size: 1em;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .navbar-links a:hover {
+            color: #fff;
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: 18px;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 11;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #23272e;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        .search-icon-container {
+            margin-right: 20px;
+        }
+        .search-icon-container img {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            filter: brightness(0.2);
+        }
+        .navbar-right a {
+            margin-right: 18px;
+            color: #23272e;
+            font-size: 1em;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .navbar-right a:hover {
+            color: #fff;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                width: 100%;
+                background: #7a7a7abe;
+                flex-direction: column;
+                padding: 10px 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .navbar-links a {
+                margin: 0;
+                padding: 12px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .navbar-right a {
+                display: none;
+            }
+            /* 隐藏滚动条但保持功能 */
+            body {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        /* 页面样式 */
+        body {
+            background: #23272e;
+            color: #eee;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+            padding: 48px 36px 48px 36px;
+        }
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 24px;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+        .notice-block {
+            background: #f7f7fa;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+            padding: 32px 28px 24px 28px;
+            margin-bottom: 32px;
+        }
+        .notice-date {
+            color: #b8860b;
+            font-size: 1.08em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .notice-content {
+            color: #23272e;
+            font-size: 1.13em;
+            line-height: 2;
+        }
+        .author {
+            text-align: center;
+            font-size: 1.2em;
+            color: #b8860b;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .poster-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .poster {
+            width: 45%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏开始 -->
+    <div class="navbar">
+        <div class="navbar-logo">TGW</div>
+        <div class="navbar-links" id="navbarLinks">
+            <a href="index.html" class="navbar-link">首页</a>
+            <a href="intel.html" class="navbar-link">情报中心</a>
+            <a href="https://flowus.cn/a7a131b8-0e88-461b-a08a-4a8c8e974e67" class="navbar-link">文档（活动中心）</a>
+            <a href="#" class="navbar-link" onclick="window.open('https://pd.qq.com/s/gpiwnyopd')">玩家社区</a>
+            <a href="encyclopedia.html" class="navbar-link">百科</a>
+            <a href="developers.html" class="navbar-link">开发人员</a>
+            <a href="contact.html" class="navbar-link">联系我们</a>
+            <a href="#" class="navbar-link">下载游戏</a>
+        </div>
+        <div class="navbar-right">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="/图片/search.png" alt="搜索" id="searchIcon" class="search-icon">
+        </div>
+    </div>
+    <!-- 顶部导航栏结束 -->
+    <div class="author">作者：北斗君</div>
+    <div class="container">
+        <div class="title">原创海报</div>
+        <div class="poster-container">
+            <!-- 海报展示区域 -->
+            <img class="poster" src="/图片/deguo.png" alt="德国海军">
+            <img class="poster" src="/图片/faguo.png" alt="法国陆军">
+        </div>
+    </div>
+    <script>
+        // 导航栏交互功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navbarLinks = document.getElementById('navbarLinks');
+            const searchIcon = document.getElementById('searchIcon');
+            
+            // 汉堡菜单切换
+            menuToggle.addEventListener('click', function() {
+                navbarLinks.classList.toggle('active');
+                // 切换汉堡菜单图标
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].classList.toggle('rotate-45');
+                spans[1].classList.toggle('opacity-0');
+                spans[2].classList.toggle('-rotate-45');
+            });
+            
+            // 点击其他区域关闭菜单
+            document.addEventListener('click', function(e) {
+                if (!menuToggle.contains(e.target) && !navbarLinks.contains(e.target)) {
+                    navbarLinks.classList.remove('active');
+                    // 重置汉堡菜单图标
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].classList.remove('rotate-45');
+                    spans[1].classList.remove('opacity-0');
+                    spans[2].classList.remove('-rotate-45');
+                }
+            });
+            
+            // 搜索图标跳转
+            searchIcon.addEventListener('click', function() {
+                window.location.href = 'search.html';
+            });
+        });
+    </script>
+</body>
+</html>

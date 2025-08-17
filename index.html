@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGW首页</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+        body {
+            background: #23272e;
+            color: #eee;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin: 72px 96px 0 96px;
+            gap: 96px;
+            padding-bottom: 72px;
+        }
+        .side-panels-vertical {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            min-width: 520px;
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+        .panel {
+            width: 100%;
+            max-width: 260px;
+            height: 180px;
+            background: #f7f7fa;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 18px 22px;
+            font-size: 1.08em;
+            color: #23272e;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+        .panel:hover {
+            transform: translateY(-8px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+            background: #fffbe6;
+        }
+        .panel > div:first-child {
+            font-size: 1.18em;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #b8860b;
+        }
+        .panel > div:last-child {
+            font-size: 0.98em;
+            color: #666;
+            font-weight: 400;
+        }
+        .container {
+            max-width: 900px;
+            flex: 1 1 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            background: #fff;
+            padding-bottom: 64px;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: #23272e;
+            font-weight: bold;
+            margin-top: 38px;
+            margin-bottom: 12px;
+            letter-spacing: 0.12em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .sub-title {
+            text-align: center;
+            font-size: 1.18em;
+            color: #b8860b;
+            margin-bottom: 24px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+        .desc-outside {
+            font-size: 1.13em;
+            color: #333;
+            line-height: 2.1;
+            margin-bottom: 36px;
+            margin-top: 0;
+            padding: 0 36px;
+            text-align: left;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.10);
+        }
+        .img-bg {
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+            margin-top: 32px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            height: 260px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 33, 40, 0.78);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            color: #f2f2f2;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .side-text {
+            font-size: 2.4em;
+            color: #ffec8b;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            user-select: none;
+        }
+        .side-text.left {
+            margin-right: 32px;
+        }
+        .side-text.right {
+            margin-left: 32px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(90deg,#b8860b 60%,#ffd700 100%);
+            color: #23272e;
+            padding: 16px 48px;
+            border-radius: 8px;
+            font-size: 1.18em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(184,134,11,0.13);
+            margin: 48px auto 0 auto;
+            min-width: 200px;
+            text-align: center;
+        }
+        .download-btn:hover {
+            background: linear-gradient(90deg,#ffd700 60%,#b8860b 100%);
+            box-shadow: 0 8px 32px rgba(184,134,11,0.18);
+        }
+        .notice, .poster-show {
+            background:#fffbe6;
+            border-radius:14px;
+            box-shadow:0 2px 16px rgba(0,0,0,0.10);
+            padding:28px 24px 22px 24px;
+            margin-bottom:32px;
+        }
+        .notice-title, .poster-title {
+            font-size:1.25em;
+            font-weight:bold;
+            color:#b8860b;
+            margin-bottom:12px;
+            letter-spacing:0.04em;
+        }
+        .poster-show {
+            background:#fff;
+            padding:24px;
+        }
+        .poster-title {
+            text-align:center;
+        }
+        .poster-controls {
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+        }
+        .poster-btn {
+            background:#444a56;
+            color:#fff;
+            border:none;
+            border-radius:50%;
+            width:40px;
+            height:40px;
+            cursor:pointer;
+            font-size:1.2em;
+            margin:0 20px;
+        }
+        .poster-img-box {
+            width:400px;
+            height:400px;
+            overflow:hidden;
+            border-radius:8px;
+            box-shadow:0 4px 8px rgba(0,0,0,0.1);
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .poster-img-box img {
+            width:100%;
+            height:100%;
+            object-fit:contain;
+        }
+        .poster-tip {
+            text-align:center;
+            margin-top:12px;
+            font-size:0.9em;
+            color:#666;
+        }
+        @media (max-width: 900px) {
+            .main-layout {
+                flex-direction: column;
+                gap: 32px;
+                margin: 18px 8px 0 8px;
+                padding-bottom: 24px;
+            }
+            .container {
+                margin-top: 0;
+                max-width: 100%;
+                padding-bottom: 350%;
+            }
+            .side-panels-vertical {
+                grid-template-columns: 1fr;
+                min-width: unset;
+                max-width: 100%;
+                gap: 18px;
+                margin-bottom: 32px;
+            }
+            .panel {
+                max-width: 330px;
+                height: auto;
+                min-height: 150px;
+            }
+            .img-bg {
+                height: 170px;
+                max-width: 100%;
+            }
+            .main-title {
+                font-size: 1.8em;
+                margin-top: 24px;
+            }
+            .sub-title {
+                font-size: 1em;
+            }
+            .desc-outside {
+                font-size: 1em;
+                padding: 0 16px;
+            }
+            .download-btn {
+                padding: 12px 24px;
+                font-size: 1em;
+            }
+            .poster-img-box {
+                width: 100%;
+                height: 250px;
+                max-width: 300px;
+            }
+            .poster-btn {
+                width: 36px;
+                height: 36px;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏占位符 -->
+    <div class="navbar-placeholder"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('.navbar-placeholder').load('navbar.html .navbar');
+        });
+    </script>
+    <div class="main-layout">
+        <!-- 左侧小板块及通知 -->
+        <div>
+            <div class="side-panels-vertical">
+                <div class="panel" onclick="window.location.href='intel.html'">
+                    <div>情报中心</div>
+                    <div>最新游戏动态与官方公告</div>
+                </div>
+                <div class="panel" onclick="window.open('https://flowus.cn/a7a131b8-0e88-461b-a08a-4a8c8e974e67')">
+                    <div>活动中心</div>
+                    <div>参与丰富的游戏活动</div>
+                </div>
+                <div class="panel" onclick="window.open('https://pd.qq.com/s/gpiwnyopd')">
+                    <div>玩家社区</div>
+                    <div>与其他玩家交流心得与攻略</div>
+                </div>
+                <div class="panel" onclick="window.location.href='encyclopedia.html'">
+                    <div>百科</div>
+                    <div>查阅游戏机制与历史资料</div>
+                </div>
+                <div class="panel">
+                    <div>卡组创建器</div>
+                    <div>自定义并保存你的专属卡组（未开放）</div>
+                </div>
+                <div class="panel" onclick="window.location.href='diy-download.html'">
+                    <div>卡牌自制器</div>
+                    <div>设计属于你的原创卡牌</div>
+                </div>
+                <div class="panel" onclick="window.location.href='developers.html'">
+                    <div>开发人员</div>
+                    <div>了解团队与开发进展</div>
+                </div>
+                <div class="panel" onclick="window.location.href='contact.html'">
+                    <div>联系我们</div>
+                    <div>反馈建议或获取技术支持</div>
+                </div>
+                <div class="panel">
+                    <div>卡牌图鉴</div>
+                    <div>寻找官方卡牌素材（未开放）</div>
+                </div>
+                <div class="panel" onclick="window.open('https://space.bilibili.com/524707454?spm_id_from=333.337.0.0')">
+                    <div>官方社交媒体账号</div>
+                    <div>观看视频和动态发现新改动</div>
+                </div>
+            </div>
+            <!-- 通知区 -->
+            <div class="notice">
+                <div class="notice-title">通知</div>
+                <div style="color:#23272e;font-size:1.05em;line-height:1.8;">
+                    <ul style="padding-left:18px;margin:0;">
+                        <li>7月28日：TGW官网全新上线，欢迎体验！</li>
+                        <li>7月29日：动员募集</li>
+                        <li>Godot开发人员（C# 优先，Gds也可以，熟悉引擎）</li>
+                        <li>Web/游戏界面UI设计师</li>
+                        <li>如需要加入请联系我们</li>
+                        <li>8月2日：历史上的今天，德国军队入侵了卢森堡，西线全面爆发</li>
+                        <li>8月11日：TGW官网首页更新，欢迎体验！</li>
+                        <li>8月12日：代码部招人，欢迎加入！</li>
+                        <li>8月15日:今天是日本投降的第八十周年,铭记历史，缅怀先烈</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 海报轮播框 -->
+            <div class="poster-show">
+                <div class="poster-title">原创海报展示</div>
+                <div class="poster-controls">
+                    <button class="poster-btn" id="prevBtn">←</button>
+                    <div class="poster-img-box" id="posterContainer" onclick="window.location.href='posters.html'">
+                        <img id="posterImage" src="/图片/deguo.png" alt="德国海军海报">
+                    </div>
+                    <button class="poster-btn" id="nextBtn">→</button>
+                </div>
+                <div class="poster-tip">点击海报查看全部，或使用左右按钮切换</div>
+            </div>
+        </div>
+        <!-- 右侧主内容 -->
+        <div class="container">
+            <div class="main-title">欢迎来到TGW</div>
+            <div class="sub-title">施利芬计划主题，开启一战新纪元</div>
+            <div class="desc-outside">
+                TGW（The Great War）的第一个主题，施利芬计划，将会引领新的浪潮。海军和陆军搭配的机制是此次主题的特点，所有的这些都将以第一次世界大战历史为起点，奔向成功的终点。这些机制赋予了战略家们指挥海上交战的权力。此外，先生们还可体验一战时期陆军交战、陆海对峙、决策、对策等机制，通过不同兵种以及卡牌间的联系发展各种不同的卡组体系。<br><br>
+                各位战略家们可以下载游戏自行体验，解锁更多可能玩法。
+            </div>
+            <div class="img-bg" style="background-image:url('/图片/lj.jpg');">
+                <div class="overlay"></div>
+                <div class="content">
+                    <div class="side-text left"><span>军</span><br><span>陆</span></div>
+                    <div style="flex:1"></div>
+                    <div class="side-text right"><span>战</span><br><span>交</span></div>
+                </div>
+            </div>
+            <div class="img-bg" style="margin-top:32px; background-image:url('/图片/hj.jpeg');">
+                <div class="overlay"></div>
+                <div class="content">
+                    <div class="side-text left"><span>军</span><br><span>海</span></div>
+                    <div style="flex:1"></div>
+                    <div class="side-text right"><span>战</span><br><span>交</span></div>
+                </div>
+            </div>
+            <div class="img-bg" style="margin-top:32px; background-image:url('/图片/lh.jpg');">
+                <div class="overlay"></div>
+                <div class="content">
+                    <div class="side-text left"><span>陆</span><br><span>海</span></div>
+                    <div style="flex:1"></div>
+                    <div class="side-text right"><span>战</span><br><span>交</span></div>
+                </div>
+            </div>
+            <div style="width:100%;text-align:center;margin:48px 0 24px 0;">
+                <a href="#" class="download-btn">下载游戏（未研发完整）</a>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        // 海报轮播逻辑
+        const posters = [
+            { src: "/图片/deguo.png", alt: "德国海军海报" },
+            { src: "/图片/faguo.png", alt: "法国陆军海报" }
+        ];
+        let currentIndex = 0;
+        const posterImage = document.getElementById('posterImage');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const posterContainer = document.getElementById('posterContainer');
+        let autoPlayInterval;
+
+        function updatePoster() {
+            posterImage.src = posters[currentIndex].src;
+            posterImage.alt = posters[currentIndex].alt;
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % posters.length;
+                updatePoster();
+            }, 5000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            stopAutoPlay();
+            currentIndex = (currentIndex - 1 + posters.length) % posters.length;
+            updatePoster();
+            startAutoPlay();
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            stopAutoPlay();
+            currentIndex = (currentIndex + 1) % posters.length;
+            updatePoster();
+            startAutoPlay();
+        });
+
+        startAutoPlay();
+        posterContainer.addEventListener('mouseenter', stopAutoPlay);
+        posterContainer.addEventListener('mouseleave', startAutoPlay);
+
+
+    </script>
+</body>
+</html>

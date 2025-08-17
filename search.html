@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索 - TGW</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+    /* 导航栏样式 */
+    .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 20px;
+    }
+    
+    .mobile-menu-btn span {
+        width: 100%;
+        height: 3px;
+        background: #23272e;
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .mobile-menu-btn {
+            display: flex !important;
+        }
+        
+        .nav-links {
+            position: absolute;
+            top: 56px;
+            left: 0;
+            width: 100%;
+            background: #7a7a7abe;
+            flex-direction: column;
+            padding: 10px 0;
+            display: none;
+        }
+        
+        .nav-links a {
+            margin: 10px 20px !important;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-links.active {
+            display: flex;
+        }
+    }
+    .navbar {
+        width:100%;
+        background:#7a7a7abe;
+        height:56px;
+        display:flex;
+        align-items:center;
+        box-shadow:0 2px 8px rgba(0,0,0,0.04);
+        position:sticky;
+        top:0;
+        z-index:10;
+        padding:0 16px;
+        box-sizing:border-box;
+    }
+    
+    .navbar-logo {
+        font-size:1.3em;
+        font-weight:bold;
+        color:#000;
+        margin-right:24px;
+        letter-spacing:0.08em;
+    }
+
+        body {
+            background: #23272e;
+            color: #23272e;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .search-layout {
+            max-width: 600px;
+            margin: 80px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+            padding: 36px 36px 48px 36px;
+        }
+        .search-title {
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #23272e;
+            margin-bottom: 32px;
+            letter-spacing: 0.08em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .search-container {
+            width: 100%;
+            margin: 0 auto 0 auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        #globalSearch {
+            padding: 12px 24px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            width: 100%;
+            font-size: 1.15em;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        #searchResults {
+            display: none;
+            position: absolute;
+            top: 54px;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            max-height: 600px;
+            overflow-y: auto;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+        .search-result-item {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .search-result-item:hover {
+            background-color: #f5f5f5;
+        }
+        .menu-popup {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            z-index: 1001;
+            min-width: 120px;
+        }
+        .menu-popup.active {
+            display: block;
+        }
+        .menu-popup-item {
+            padding: 12px 18px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            color: #23272e;
+        }
+        .menu-popup-item:last-child {
+            border-bottom: none;
+        }
+        .menu-popup-item:hover {
+            background: #f5f5f5;
+        }
+        @media (max-width: 768px) {
+            .search-layout {
+                max-width: 98vw;
+                padding: 18px 8px 32px 8px;
+            }
+            .search-title {
+                font-size: 1.5em;
+                margin-bottom: 18px;
+            }
+            #globalSearch {
+                font-size: 1em;
+                padding: 10px 14px;
+            }
+            #searchResults {
+                top: 44px;
+            }
+            
+            /* 移动端导航栏样式 */
+            .mobile-menu-btn {
+                display: flex !important;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 24px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                margin-left: 20px;
+            }
+            
+            .mobile-menu-btn span {
+                width: 100%;
+                height: 3px;
+                background: #23272e;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 56px;
+                left: 0;
+                width: 100%;
+                background: #7a7a7abe;
+                flex-direction: column;
+                padding: 10px 0;
+                display: none;
+            }
+            
+            .nav-links a {
+                margin: 10px 20px !important;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏开始 -->
+   <div class="navbar">
+        <div class="navbar-logo">TGW</div>
+        <div class="navbar-links" id="navbarLinks">
+            <a href="index.html" class="navbar-link">首页</a>
+            <a href="intel.html" class="navbar-link">情报中心</a>
+            <a href="https://flowus.cn/a7a131b8-0e88-461b-a08a-4a8c8e974e67" class="navbar-link">文档（活动中心）</a>
+            <a href="#" class="navbar-link" onclick="window.open('https://pd.qq.com/s/gpiwnyopd')">玩家社区</a>
+            <a href="encyclopedia.html" class="navbar-link">百科</a>
+            <a href="developers.html" class="navbar-link">开发人员</a>
+            <a href="contact.html" class="navbar-link">联系我们</a>
+            <a href="#" class="navbar-link">下载游戏</a>
+        </div>
+        <div class="navbar-right">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="/图片/search.png" alt="搜索" id="searchIcon" class="search-icon">
+        </div>
+    </div>
+    <!-- 顶部导航栏结束 -->
+    <div class="search-layout">
+        <div class="search-title">搜索</div>
+        <div class="search-container">
+            <input type="text" id="globalSearch" placeholder="输入关键词搜索...">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+            } else {
+                navLinks.classList.remove('active');
+            }
+        }
+        
+        window.addEventListener('resize', checkScreenSize);
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        checkScreenSize();
+    });
+        // 移动端导航栏交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            // 检测屏幕宽度，显示/隐藏汉堡菜单
+            function checkScreenSize() {
+                if(window.innerWidth <= 768) {
+                    mobileMenuBtn.style.display = 'flex';
+                    navLinks.style.display = 'none';
+
+        const searchData = [
+            {title: "施利芬计划", content: "施利芬计划 德国陆军总参谋长施利芬伯爵制定的作战计划。该计划旨在通过快速进攻法国北部，绕过法国主力防线，迅速占领巴黎，迫使法国投降。计划的核心是通过比利时实施大规模包抄，同时在东线对俄罗斯采取防御态势。尽管计划在一战初期实施，但由于后勤问题和英国远征军的干预，最终在马恩河战役中受挫。", url: "encyclopedia.html#schlieffenplan", type: "百科"},
+            {title: "一战陆军单位", content: "第一次世界大战中的主要陆军单位和编制包括步兵师、骑兵师和炮兵团。步兵师通常由3个步兵团组成，每个团有3个营，每营有4个连。德国陆军师的标准编制约为15,000人，而英法陆军师则约为12,000人。战争后期，各国开始采用更小规模的突击队和特种部队，以适应堑壕战的特点。游戏中，玩家可以指挥这些不同类型的单位，每种单位都有其独特的战术价值和能力。", url: "encyclopedia.html#army", type: "百科"},
+            {title: "德国海军", content: "一战时期德国海军的发展与主要舰艇。德国海军在提尔皮茨大admiral的领导下迅速扩张，建造了包括德雷德诺特级战列舰在内的现代化舰队。主要舰艇包括拜仁级战列舰、沙恩霍斯特级装甲巡洋舰和U型潜艇。尽管在数量上不及英国皇家海军，但德国海军在日德兰海战等重要战役中表现出色。游戏中，德国海军单位擅长潜艇战和突袭战术，可以有效干扰敌方补给线。", url: "encyclopedia.html#germannavy", type: "百科"},
+            {title: "盟国", content: "盟国 暂无（美国，奥斯曼，意大利，塞尔维亚，保加利亚，罗马尼亚，希腊，比利时，苏俄待添加）", url: "encyclopedia.html#allies", type: "百科"},
+            {title: "机制", content: "游戏基本机制，包括补给值、计划值和行动点。补给值代表军队的后勤能力，每回合可用于部署单位或使用特殊能力；计划值反映战略准备程度，高计划值可解锁更强大的战术选项；行动点限制每回合可执行的操作数量。此外，游戏还包括天气系统（影响战斗效率）、士气机制（影响单位性能）和科技研发系统（解锁新能力）。玩家需要平衡这些资源，制定最佳战略。", url: "encyclopedia.html#mechanics", type: "百科"},
+            {title: "堑壕层数", content: "步兵单位的堑壕机制，提供额外防御。堑壕分为三个等级：简易堑壕（+1防御）、标准堑壕（+2防御）和加固堑壕（+3防御）。建造和升级堑壕需要消耗行动点和补给值。堑壕可以减少受到的伤害，但也会降低单位的机动性。某些特殊单位如工兵可以更快地建造堑壕，而重型炮兵则可以对堑壕造成额外伤害。在防御战中，合理利用堑壕系统是取胜的关键。", url: "encyclopedia.html#trench", type: "百科"},
+            {title: "战线", content: "游戏中的战线系统，包括海战线和陆战线。战线代表前线的实际位置，玩家需要通过推进战线来占领敌方领土。陆战线分为西线、东线和南线，每条战线都有其独特的地形和战略价值。海战线则包括北海、地中海和大 Atlantic，控制这些区域可以影响补给线和增援速度。战线的推进或后退取决于战斗结果，某些关键区域的得失可能会触发特殊事件或胜利条件。", url: "encyclopedia.html#battlelines", type: "百科"},
+            {title: "卡组构筑", content: "游戏的卡组构筑规则要求陆军牌40张，海军牌20张，陆军盟国牌最多12张。玩家可以根据自己的战略偏好选择不同类型的卡牌，包括单位卡、战术卡、科技卡和事件卡。每种卡牌都有其独特的费用、效果和使用条件。构建有效的卡组需要考虑资源曲线、协同效应和应对不同战略的灵活性。游戏鼓励玩家尝试不同的卡组组合，发现新的战术可能性。", url: "encyclopedia.html#deckbuilding", type: "百科"},
+            {title: "抽牌机制", content: "友方回合开始时，玩家可以选择抽2张陆军牌或抽1张海军牌。这一机制反映了资源分配的战略决策，玩家需要根据当前局势决定优先发展哪个兵种。某些特殊卡牌或能力可以修改这一基本规则，允许额外抽牌或查看牌堆顶部的卡牌。此外，特定事件或战术也可能触发额外的抽牌机会，如成功的侦察行动或控制关键补给点。", url: "encyclopedia.html#drawing", type: "百科"},
+            {title: "手牌上限", content: "游戏中的手牌上限为9张，超过此数量的卡牌必须在回合结束时弃置。这一限制模拟了指挥能力的上限，防止玩家无限积累资源。某些特殊能力或科技可以临时或永久增加手牌上限，如'高效参谋部'科技可将上限提高到11张。相反，某些负面事件如'通信中断'可能会暂时降低手牌上限。玩家需要在保留关键卡牌和维持手牌流转之间找到平衡。", url: "encyclopedia.html#handlimit", type: "百科"},
+            {title: "稀有度", content: "卡牌稀有度系统，包括黑桃（普通）、红桃（罕见）、梅花（稀有）和方片（传奇）四个等级。稀有度越高的卡牌效果越强大，但获取难度也越大。普通卡牌构成卡组的基础，提供基本功能；罕见卡牌提供特殊能力，增强特定战术；稀有卡牌可以改变战局，提供独特优势；传奇卡牌则代表历史上的关键人物、事件或技术，具有游戏改变性的效果。卡组构建时需要平衡不同稀有度的卡牌。", url: "encyclopedia.html#rarity", type: "百科"},
+            {title: "计划值增长机制", content: "每个友方回合开始时，计划值自然增加1点，到达16点时不再自然增加。计划值代表军队的战略准备程度，高计划值可以解锁更强大的单位和战术。除自然增长外，某些卡牌和能力也可以提供额外的计划值，如'战略规划'卡可立即增加2点计划值。玩家可以选择快速积累计划值以部署强力单位，或使用低计划值单位进行早期压制。不同战略路线对计划值的依赖程度各不相同。", url: "encyclopedia.html#planning", type: "百科"},
+            {title: "胜负条件", content: "游戏的胜利条件包括多种路径：军事胜利（摧毁敌方指挥部，使其血量降至零）、战略胜利（控制特定数量的关键区域）、资源胜利（敌方牌堆耗尽）和外交胜利（达成特定条件触发和平协议）。不同的胜利条件鼓励多样化的战略路线。同时，游戏也设置了失败条件，如指挥部被摧毁、士气降至零或关键资源枯竭。玩家需要根据局势灵活调整战略，同时防止敌方达成其胜利条件。", url: "encyclopedia.html#victory", type: "百科"},
+            {title: "1914工作室澄清公告", content: "关于近期网络上出现的抄袭指控，1914工作室特此声明：TGW游戏的所有概念、机制和美术资源均为原创，或已获得合法授权使用。我们尊重知识产权，任何相似之处纯属巧合。工作室已保留相关设计文档和开发记录，可证明创意来源。我们欢迎玩家提出建设性意见，但坚决反对恶意诽谤。工作室将继续专注于游戏开发，为玩家带来高质量的历史战争模拟体验。", url: "intel.html#clarification", type: "情报"},
+            {title: "游戏开发进度", content: "TGW游戏开发的最新进展：核心卡牌系统已完成90%，包括300多张独特卡牌的设计和平衡；战役模式已完成70%，目前正在开发西线战役的关键战役；多人对战系统已完成60%，正在进行网络同步和匹配系统的测试；单人教程已完成85%，包括基础和进阶教程关卡。美术资源方面，卡牌插画已完成75%，界面设计已完成80%，音效系统已完成65%。预计在未来3个月内发布首个可玩的测试版本，欢迎玩家报名参与封闭测试。", url: "intel.html#progress", type: "情报"},
+            {title: "卡牌平衡性调整", content: "最新一批卡牌的平衡性调整公告：1. '重型榴弹炮'卡牌成本从5点降至4点，但耐久度从4降至3；2. '潜艇战术'卡牌效果修改，现在可以直接攻击敌方后排单位，但使用后会暴露位置；3. '紧急动员'卡牌现在除了生成2个步兵单位外，还会降低1点计划值；4. '毒气攻击'卡牌伤害从2点提高到3点，但现在会同时影响己方前线单位；5. '补给线'卡牌效果增强，现在每回合额外提供1点补给值。这些调整旨在平衡游戏节奏，增加战术多样性，将在下一版本更新中实装。", url: "intel.html#balance", type: "情报"},
+            {title: "1914工作代码部招人公告", content: "TGW制作组正着手游戏的开发，但代码人员紧缺令游戏制作进度缓慢。我们需要能并肩写代码、改bug的伙伴。如果你曾经学习过C# godot，亦或是正在学习的小白，请联系我们，TGW代码部真诚欢迎你的加入。联系方式：QQ群1043661227。只要顺利通过审核，即可立即加入游戏代码部，成为我们未来的同事！", url: "intel.html#job", type: "情报"},
+            {title: "官方媒体账号更改",content:"【关于《止战之战》账号交接及进度报告的说明】各位指挥官：因运营调整，《止战之战》官方账号更改，新管理账号为【没有盟友的威廉二世TGW】（原账号将同步停止使用）。后续的信息将统一通过新账号发布，烦请大家及时关注并添加好友，避免错过重要信息。期间如有任何建议，欢迎通过官网留言(发邮件联系)，感谢各位的支持与耐心！《止战之战》运营团队",url:"intel.html#clarification",type:"情报"},
+            {title:"问题反馈",content:"各位战略家们好，感谢您对TGW的支持与反馈。针对各位对TGW反映的问题，我们的项目组已经在积极跟进，争取早日修复各种问题，开发更完善的功能。同时我们在此也回应一些问题。", url:"intel.html#feedback", type:"情报"},
+            {title:"词条",content:"词条 机动X：部署或加入战场的回合内，可以行动X次，X最多为3 掩护：令相邻的单位被掩护，除部分特殊单位外，其他单位无法攻击被掩护的单位 支援：拥有此词条的海军可以攻击陆军 迟滞：令1个单位无法行动，直到下一个其所有者的回合结束 穿插：攻击时不会受到反击伤害 埋伏：每回合首次被攻击时，会先造成反击伤害。若攻击的单位因此阵亡，则埋伏单位不受到此次攻击伤害 伪装：伪装单位无法被单位攻击。伪装单位行动后失去伪装。掩护单位和位于交战线的单位无法拥有伪装 山地：当部署或加入新的山地单位时，使上一个友方部署或加入的山地单位获得+1/+1 协同：选择一个友方单位与本单位共同拥有此词条效果 冲锋：免疫首次反击伤害 抉择：从多个选项中选择一项执行 动员X：X个友方回合后，触发效果 浴血：单位受伤后触发效果", url:"encyclopedia.html#feedback", type:"百科"},
+            {title: "主国", content: "英国，德国，法国，俄国（奥匈待添加）", url: "encyclopedia.html#allies", type: "百科"},
+        ];
+
+        // 防抖函数
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        // 创建搜索结果项样式
+        function createSearchResultItem(item, keyword) {
+            return `
+                <div class="search-result-item"
+                     onclick="window.location.href='${item.url}'">
+                    <div style="font-weight:bold;margin-bottom:8px;font-size:1.1em;">${highlightKeyword(item.title, keyword)}</div>
+                    <div style="font-size:0.85em;color:#666;margin-bottom:6px;">${item.type} · <a href="${item.url}" style="color:#1a73e8;text-decoration:none;">${item.url.split('#')[0]}</a></div>
+                    <div style="font-size:0.95em;color:#333;line-height:1.5;max-height:300px;overflow-y:auto;padding:8px;background:#f9f9f9;border-radius:4px;border-left:3px solid #ddd;">${highlightKeyword(item.content, keyword)}</div>
+                </div>
+            `;
+        }
+
+        // 搜索处理函数
+        const searchInput = document.getElementById('globalSearch');
+        const searchResults = document.getElementById('searchResults');
+        const handleSearch = debounce(function() {
+            const keyword = searchInput.value.trim().toLowerCase();
+            if(keyword.length === 0) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            const filtered = searchData.filter(item =>
+                item.title.toLowerCase().includes(keyword) ||
+                item.content.toLowerCase().includes(keyword)
+            );
+            if(filtered.length > 0) {
+                searchResults.innerHTML = `
+                    <div style="padding:10px;background:#f0f0f0;border-bottom:1px solid #ddd;font-weight:bold;">
+                        找到 ${filtered.length} 条包含 "${keyword}" 的结果
+                    </div>
+                    ${filtered.map(item => createSearchResultItem(item, keyword)).join('')}
+                `;
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.innerHTML = '<div style="padding:12px;color:#666;text-align:center;">未找到相关结果</div>';
+                searchResults.style.display = 'block';
+            }
+        }, 300);
+
+        // 高亮关键词
+        function highlightKeyword(text, keyword) {
+            if (!keyword) return text;
+            const regex = new RegExp(keyword, 'gi');
+            return text.replace(regex, match => `<span style="background-color:#ffeb3b;font-weight:bold;padding:0 2px;border-radius:2px;">${match}</span>`);
+        }
+
+        // 绑定搜索输入事件
+        searchInput.addEventListener('input', handleSearch);
+
+        // 点击页面其他区域关闭搜索结果
+        document.addEventListener('click', function(e) {
+            if(!e.target.closest('#globalSearch') && !e.target.closest('#searchResults')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // 添加回车键搜索跳转功能
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const keyword = searchInput.value.trim().toLowerCase();
+                if (keyword.length > 0) {
+                    const firstMatch = searchData.find(item =>
+                        item.title.toLowerCase().includes(keyword) ||
+                        item.content.toLowerCase().includes(keyword)
+                    );
+                    if (firstMatch) {
+                        window.location.href = firstMatch.url;
+                    }
+                }
+            }
+        });
+
+        // 放大镜跳转逻辑
+        document.getElementById('searchIcon').addEventListener('click', function(e) {
+            window.location.href = 'search.html';
+        });
+        // 导航栏弹出菜单逻辑
+        const menuBtn = document.getElementById('menuBtn');
+        const menuPopup = document.getElementById('menuPopup');
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menuPopup.classList.toggle('active');
+        });
+        document.addEventListener('click', function(e) {
+            if (!menuBtn.contains(e.target)) {
+                menuPopup.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

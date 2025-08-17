@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>情报中心 - TGW</title>
+    <link rel="icon" href="/图片/tb.png" type="image/png">
+    <style>
+        /* 主体内容样式 */
+        body {
+            background: #23272e;
+            color: #eee;
+            font-family: "微软雅黑", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+            padding: 48px 36px 48px 36px;
+        }
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 24px;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+        .notice-block {
+            background: #f7f7fa;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+            padding: 32px 28px 24px 28px;
+            margin-bottom: 32px;
+        }
+        .notice-date {
+            color: #b8860b;
+            font-size: 1.08em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .notice-content {
+            color: #23272e;
+            font-size: 1.13em;
+            line-height: 2;
+        }
+
+        .img-container {
+            width: 100%;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .img-caption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        @media (max-width: 900px) {
+            /* 隐藏滚动条但保持功能 */
+            body {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏占位符 -->
+    <div class="navbar-placeholder"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('.navbar-placeholder').load('navbar.html .navbar');
+        });
+    </script>
+    <div class="container">
+        <div class="title">情报中心</div>
+        <div class="notice-block" id="job">
+            <div class="notice-date">发布日期：2025年8月12日</div>
+            <div class="notice-content">
+                <b>1914工作代码部招人公告</b><br>
+                TGW的所有支持者们好！<br>
+                <br>目前，TGW制作组正着手游戏的开发。但是，代码人员的紧缺令我们的游戏制作进度缓慢，困难重重。<br>
+                所以，今天不写官话，只说一句掏心窝子的：我们需要能并肩写代码、改bug的伙伴。
+                我们缺的不仅仅是人手，更是风雨同舟的同志。
+                如果你曾经学习过C# godot，亦或是正在学习的小白，请毫不犹豫地联系我们，TGW代码部真诚地欢迎你们的加入。
+                联系方式：QQ群1043661227
+                只要您顺利通过审核，即可立即加入游戏代码部，成为我们未来的同事！
+                如果你已经心动，请立刻联系我们。
+                如果你认为暂时不合适，也恳请转发到任何可以看见的地方。你的每一次转发，都有可能在某个深夜拯救一个累到崩溃的程序员。
+                感谢看到最后，期待您的加入。
+                <br>——TGW制作组全体人员 敬上<br><!-- 文本聚集在一起，所以不添加br -->
+                <div class="img-container">
+                    <img src="/图片/hbj.jpg" alt="宣传报">
+                </div>
+            </div>
+        </div>
+        <div class="notice-block">
+            <div class="notice-date">发布日期：2025年8月5日</div>
+            <div class="notice-content">
+                <b>问题反馈</b><br>
+                各位战略家们好，感谢您对TGW的支持与反馈。针对各位对TGW反映的问题，我们的项目组已经在积极跟进，争取早日修复各种问题，开发更完善的功能。同时我们在此也回应一些问题。<br>
+                <br>
+                Q:请问可以将代码开源，让更多人加入开发吗？<br>
+                A:我们暂时不考虑将代码开源。因为目前开发处于关键期，新人进来了解项目的机制和细节需要较多的时间，可能会导致项目无法及时跟进，所以暂时不能接受您的好意。<br>
+                <br>
+                Q:请问可以对游戏内容进行解包吗？<br>
+                A:抱歉，不可以的。我们拒绝所有的私下解包行为。一经发现，我们必定追究。<br>
+            </div>
+        </div>
+        <div class="notice-block">    
+            <div class="notice-date">发布日期：2025年8月5日</div>
+            <div class="notice-content">
+                <b>关于《止战之战》账号交接及进度报告的说明</b><br>
+                各位指挥官：<br>
+                <br>
+                因运营调整，《止战之战》官方账号更改，新管理账号为【没有盟友的威廉二世TGW】（原账号将同步停止使用）。后续的信息将统一通过新账号发布，烦请大家及时关注并添加好友，避免错过重要信息。<br>
+                <br>
+                如有任何建议，欢迎通过官网留言(发邮件联系)，感谢各位的支持与耐心！<br>
+                <br>
+                《止战之战》运营团队<br>
+            </div>
+        </div>
+        <div class="notice-block">
+            <div class="notice-date">发布日期：2025年8月1日</div>
+            <div class="notice-content">
+                <b>联合声明：钢铁前线组织与1914studio和解公告</b><br>
+                钢铁前线组织  与 1914studio 谨此共同发布本联合声明。<br>
+                <br>
+                近期，双方之间发生了一些误解与争议，相关情况在1914studio的官方情报页面（https://tgw-1914studio.netlify.app/intel）亦有提及。<br>
+                <br>
+                经过坦诚、深入的沟通与调查，双方现已确认，此前的不愉快事件源于个别成员的个人行为及沟通不畅所致，这些行为不代表钢铁前线组织或1914studio的官方立场、政策或价值观。<br>
+                <br>
+                我们理解，这些事件可能对双方社群及关注者造成了困扰。在此，我们郑重澄清：钢铁前线组织与1914studio之间不存在根本性的组织层面矛盾或冲突。<br>
+                <br>
+                本着相互尊重、共同发展的原则，双方已就此次事件达成充分谅解，并决定正式和解。我们将共同努力，消除误解带来的影响。<br>
+                <br>
+                我们重申对彼此组织目标与工作的尊重。双方均期待未来在可能的领域进行建设性的交流与合作，共同致力于为我们的社群创造积极价值。<br>
+                <br>
+                此次事件提醒我们加强内部沟通与管理的重要性。双方均承诺将采取措施，确保未来沟通的清晰与顺畅，避免类似情况再次发生。<br>
+                <br>
+                感谢所有关注此事的社群成员的理解与支持。<br>
+                <br>
+                <div style="text-align:right;">
+                    此致，<br>
+                    钢铁前线组织<br>
+                    1914studio
+                </div>
+            </div>
+        </div>
+        <div class="notice-block">
+            <div class="notice-date">发布日期：2025年7月30日</div>
+            <div class="notice-content">
+                <b>1914工作室关于抄袭事件澄清公告</b><br>
+                在7月29日晚至7月30日凌晨间，1914工作室的负责人之一——威廉二世秉持着和平共处、开放互鉴的精神，与隔壁二战卡牌游戏——钢铁前线的一位核心人员进行了联系。但是，对方却在开始对话的不久后就突兀的以高高在上的姿态声称1914工作室抄袭了它们的词条。
+                
+                <div class="img-container">
+                    <img src="/图片/zj1.jpg" alt="原对话截图1">
+                    <div class="img-caption">此为原对话截图</div>
+                </div>
+                
+                我方对此进行了解释，对方却信誓旦旦的甩出了几张大群玩家言论的截图，称这就是我们抄袭他们的证据。
+                
+                <div class="img-container">
+                    <img src="/图片/zj2.jpg" alt="证据截图2">
+                    <div class="img-caption">对方所谓的证据</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="/图片/zj3.jpg" alt="证据截图3">
+                </div>
+                
+                <div class="img-container">
+                    <img src="/图片/zj4.png" alt="证据截图4">
+                </div>
+                
+                在此，1914工作室严肃郑重的声明，这是钢铁前线方对我方做出的无耻污蔑，对方声称我们抄袭了他们的单位模板，但他们的模板是在7月29日才出现在1914工作室的大群（不等于开发人员群）中的，而我方早在7月28日就已经有一版单位模板了（已经由于泄露废除）。
+                
+                <div class="img-container">
+                    <img src="/图片/zj5.jpg" alt="废除的单位模板">
+                    <div class="img-caption">因泄露废除的单位模板</div>
+                </div>
+                
+                同时，对方还借机生事，以我方曾经的一则群公告为由声称我方对其进行拉踩和暗讽，但事实上，我方公告中的内容只是从实说来，根本不存在所谓的拉踩，有心了解的都知道ZZQP曾经由于内部混乱进行了分裂，钢铁前线就是分裂的产物。
+                
+                <div class="img-container">
+                    <img src="/图片/zj6.jpg" alt="原对话截图2">
+                    <div class="img-caption">此为原对话截图</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="/图片/zj7.jpg" alt="公告截图">
+                    <div class="img-caption">此为对方所谓的踩一捧一，暗讽的公告</div>
+                </div>
+                
+                对方还认为我方的机动X词条和4阵线机制是抄袭他们的产物，这更是是无稽之谈。关于ZZQP（钢铁前线前身）的制作视频首次公布时间是在7月26日，而我方的机动X词条和4阵线机制均在7月25日就已经出现，我方实在好奇对方是如何厚颜无耻的用虚无缥缈的所谓证据来含血喷人的。难不成是把我们1914工作室的文书当成死人了吗？
+                
+                <div class="img-container">
+                    <img src="/图片/zj8.jpg" alt="发布时间截图">
+                    <div class="img-caption">对方发布视频的时间</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="/图片/zj9.jpg" alt="词条讨论截图">
+                    <div class="img-caption">我方讨论机动X词条的时间</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="/图片/zj10.jpg" alt="阵线机制讨论">
+                    <div class="img-caption">我方讨论4阵线机制的时间</div>
+                </div>
+                
+                公道自在人心，1914工作室究竟有没有抄袭，群众一看便知。
+            </div>
+        </div>
+        <div class="notice-block">
+            <div class="notice-date">发布日期：2025年7月28日</div>
+            <div class="notice-content">
+                第一赛季的陆军将紧紧围绕着施利芬计划为主，各国的特色陆军单位可以为各位先生们展示不同的体系和不同的特色玩法。同时，陆军也可以为海军提供帮助，通过在陆地战场上不断的施加压力，可以减轻我方海军的压力。当然，陆地战场也是分出胜负的重要战场，通过陆海协同，我们将节节推进，直到打败敌军。更多陆军单位的特色体系及特色玩法等待大家的开发。<br>
+                而本赛季的海军将以德国与英国在印太交锋为主。海军舰船将给予陆军单位增益以确保局势向我方倾斜。同时，海军同样可以决定战局胜利。当海军完成封锁时会不断扩大陆军优势，同时大幅度削弱陆军力量。部分海军单位将协同陆军一同战斗，抵消敌方优势。更多海军单位的使用方法等待大家的开发。<br>
+                同时，我们开发了全新陆战机制：堑壕。这一机制将更好的模拟一战的主要战斗——堑壕战。其机制如下：<br>
+                <b>堑壕层数：</b><br>
+                每个步兵单位初始为0，上限为5。步兵单位在1回合内不行动且未被攻击且未进行攻击时，在回合结束时堑壕值+1，每拥有1点堑壕值，防御+1，移动后，堑壕值归零。<br>
+                并且，我们对于棋桌方面也有很大创新。内容如下：<br>
+                <b>战线：</b><br>
+                共四条，海战线每行可容纳三个单位，陆战线每行可容纳5个单位。中间两条战线可以互相争夺。<br>
+                <br>
+                游戏基本机制如下：<br>
+                <b>计划值增长机制：</b><br>
+                计划值：开局为2，初始上限为16，最高为32。使用部分卡牌会增加或减少补给值。<br>
+                每个友方回合开始时，自然增加1，到达16时不再自然增加。<br>
+                <b>伤害类型：</b><br>
+                对战伤害（包括攻击伤害和反击伤害），决策伤害，特性伤害。<br>
+                <b>卡组构筑：</b><br>
+                陆军牌40张，海军牌20张，陆军盟国牌最多12张，海军盟国牌最多4张，所有英雄牌，决策牌和对策牌均分海陆军。<br>
+                <b>抽牌机制：</b><br>
+                友方回合开始时，玩家可以选择抽2张陆军牌或抽1张海军牌<br>
+                <b>手牌上限：</b>9<br>
+                <b>稀有度：</b><br>
+                黑桃：每个卡组中只能携带1张同名卡牌<br>
+                红桃：每个卡组中只能携带2张同名卡牌<br>
+                梅花：每个卡组中只能携带3张同名卡牌<br>
+                方片：每个卡组中只能携带4张同名卡牌<br>
+                <b>胜利机制：</b><br>
+                回合结束时牌堆，其中一方的牌堆，手牌和场上均无牌或一方指挥部血量为零时，另一方获胜。<br>
+                <b>本赛季，我们将推出如下国家：</b><br>
+                <b>主国：</b><br>
+                英国，德国，法国，俄国，奥匈帝国<br>
+                <b>盟国：</b><br>
+                塞尔维亚，保加利亚<br>
+                <b>本赛季我们将使用的词条：</b><br>
+                <b>词条：</b><br>
+                机动X：部署或加入战场的回合内，可以行动X次，X最多为3<br>
+                掩护：令相邻的单位被掩护，除部分特殊单位外，其他单位无法攻击被掩护的单位<br>
+                支援：拥有此词条的海军可以攻击陆军<br>
+                迟滞：令1个单位无法行动，直到下一个其所有者的回合结束<br>
+                穿插：攻击时不会受到反击伤害<br>
+                山地：山地单位部署或加入时每有一个友方山地单位获得加+1/+1<br>
+                协同：选择一个友方单位与本单位共同拥有此词条效果<br>
+                冲锋：免疫首次反击伤害<br>
+                抉择：从多个选项中选择一项执行<br>
+                动员：友方回合开始时，获得+1/+1。受到对战伤害后，移除此词条<br>
+                最后，我们将介绍卡牌种类：<br>
+                <b>卡牌类型及分类：</b><br>
+                <b>陆军：</b><br>
+                步兵：一个回合内可以攻击或移动<br>
+                火炮：可以直接攻击任意一条战线，且不受反击伤害<br>
+                骑兵：在一回合内可同时移动并攻击，且可以在两条交战线任意移动（除非满员）<br>
+                <b>海军：</b><br>
+                潜艇，驱逐，巡洋，战列巡洋，战列以及辅助舰船等<br>
+                <b>其它牌</b><br>
+                决策：指令<br>
+                对策：反制<br>
+                人物：无稀有度，每个卡组每张同名牌只能携带1张<br>
+                注：此公告内容并非为最终版本，实际上线后可能会有所改动
+            </div>
+        </div>
+    </div>
+    <!-- 引入搜索功能脚本 -->
+    <script>
+
+    </script>
+</body>
+</html>
+<!-- 
+                          MMM                                                     MMMM                                                                                           MMMMM                            
+    MMMMMMMM         MMMMMMMMMMM        MMMMMMMM               MMMMMM        MMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMM  MMMMM          MMMM     MMMMMMMMMMMMMM         MMMM        MMMMMMMMMMMMMM                       
+   MMMMMMMMM        MMMMM   MMMMMM      MMMMMMMM              MMMMMMM      MMMMMMM  MMMMMM  MMMMMMMMMMMMMMMMMM   MMMMM          MMMM     MMMMMMMMMMMMMMMM       MMMM      MMMMMMM   MMMMMMM                      
+        MMMM       MMMMM      MMMM          MMMM             MMMMMMMM      MMMM         M          MMMM          MMMMM          MMMM     MMMM        MMMMM      MMMM     MMMMMM        MMMMM                     
+        MMMM       MMMM       MMMMM         MMMM            MMMM MMMM      MMMM                    MMMM          MMMMM          MMMM     MMMM          MMMM     MMMM    MMMMM            MMMM                    
+        MMMM       MMMM        MMMM         MMMM          MMMMM  MMMM      MMMMMMMM                MMMM          MMMMM          MMMM     MMMM          MMMMM    MMMM    MMMMM            MMMMM                   
+        MMMM       MMMMM     MMMMMM         MMMM         MMMMM   MMMM        MMMMMMMMMMM           MMMM          MMMMM          MMMM     MMMM          MMMMM    MMMM    MMMM             MMMMM                   
+        MMMM         MMMMMMMMMMMMMM         MMMM       MMMMM     MMMM            MMMMMMMMM         MMMM          MMMMM          MMMM     MMMM          MMMMM    MMMM    MMMM             MMMMM                   
+        MMMM           MMMMM  MMMMM         MMMM       MMMMMMMMMMMMMMMMM             MMMMMM        MMMM          MMMMM          MMMM     MMMM          MMMMM    MMMM    MMMMM            MMMMM                   
+        MMMM                  MMMMM         MMMM       MMMMMMMMMMMMMMMMM               MMMM        MMMM           MMMM          MMMM     MMMM         MMMMM     MMMM    MMMMM           MMMMM                    
+        MMMM                 MMMMM          MMMM                 MMMM      MM          MMMM        MMMM           MMMMM       MMMMMM     MMMM        MMMMM      MMMM     MMMMMM        MMMMM                     
+  MMMMMMMMMMMMMMM   MMMM   MMMMMM     MMMMMMMMMMMMMMM            MMMM     MMMMMMMM MMMMMMM         MMMM            MMMMMMM MMMMMMMM      MMMMMMMMMMMMMMMM       MMMM      MMMMMMMM MMMMMMMM                      
+  MMMMMMMMMMMMMMM   MMMMMMMMMMM       MMMMMMMMMMMMMMM            MMMM       MMMMMMMMMMMMM          MMMM              MMMMMMMMMMMM        MMMMMMMMMMMMMM         MMMM        MMMMMMMMMMMMM                        
+-->
